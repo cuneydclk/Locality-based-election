@@ -45,7 +45,7 @@ const dummy_list = [
           ["muharrem ince ", "5"],
           ["sinan oğan", "10"],
           ["kemal kılıçdaroğlu", "249"],
-          ["erduvan", "0"],
+          ["EDOĞAN", "0"],
         ],
       },
     ],
