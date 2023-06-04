@@ -37,9 +37,13 @@ const voteBoxSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    vote: [{
+    voteToParty: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'VoteTo'
+        ref: 'VoteToParty'
+    }],
+    voteToCandidate: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'VoteToCandidate'
     }]
 });
 
