@@ -1,6 +1,6 @@
 import ResulList from "../ResultList";
 import "./MainPage.css";
-import { useState } from "react";
+import { useReducer } from "react";
 
 const dummy_list = [
   {
@@ -53,10 +53,39 @@ const dummy_list = [
   },
 ];
 const MainPage = (props) => {
-  const [resultType, setResultType] = useState(
-    "Milletvekili Sonuçlarını Göster"
-  );
-  const changeResultHandler = (event) => {};
+  const reducer = (state, action) => {
+    if (action.type === "mv") {
+      return {
+        type: "mv",
+        text: "Milletvekili Sonuçlarını Göster",
+        electionType: "Cumhurbaşkanlığı Sonuçları",
+        resultList: { dummy_list },
+      };
+    } else if (action.type === "cb") {
+      return {
+        type: "cb",
+        text: "Cumhurbaşkanlığı sonucunu göster",
+        electionType: "Milletvekili Sonuçları",
+        resultList: { dummy_list },
+      };
+    }
+    return state;
+  };
+
+  const [state, dispatch] = useReducer(reducer, {
+    type: "mv",
+    electionType: "Cumhurbaşkanlığı Sonuçları",
+    text: "Milletvekili Sonuçlarını Göster",
+    resultList: { dummy_list },
+  });
+
+  const changeResultHandler = (event) => {
+    if (state.type === "mv") {
+      dispatch({ type: "cb" });
+    } else {
+      dispatch({ type: "mv" });
+    }
+  };
   return (
     <>
       <navbar>
@@ -66,13 +95,13 @@ const MainPage = (props) => {
         <p>harita</p>
 
         <div className="side-bar">
-          <h>Cumhurbaşkanlığı Seçimi</h>
+          <h>{state.electionType}</h>
           <ResulList electionResults={dummy_list} />
         </div>
       </main>
       <footer>
         <button className="d" onClick={changeResultHandler}>
-          {resultType}
+          {state.text}
         </button>
       </footer>
     </>
