@@ -1,5 +1,6 @@
 import ResulList from "../ResultList";
 import "./MainPage.css";
+import { useState } from "react";
 
 const dummy_list = [
   {
@@ -52,6 +53,10 @@ const dummy_list = [
   },
 ];
 const MainPage = (props) => {
+  const [resultType, setResultType] = useState(
+    "Milletvekili Sonuçlarını Göster"
+  );
+  const changeResultHandler = (event) => {};
   return (
     <>
       <navbar>
@@ -66,7 +71,9 @@ const MainPage = (props) => {
         </div>
       </main>
       <footer>
-        <button className="d">Milletvekili Sonuçlarını Göster</button>
+        <button className="d" onClick={changeResultHandler}>
+          {resultType}
+        </button>
       </footer>
     </>
   );
