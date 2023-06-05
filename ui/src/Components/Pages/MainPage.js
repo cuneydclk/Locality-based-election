@@ -1,5 +1,5 @@
 import ResulList from "../ResultList";
-import "./MainPage.css";
+import classes from "./MainPage.module.css";
 import { useReducer } from "react";
 
 const dummy_list = [
@@ -88,19 +88,24 @@ const MainPage = (props) => {
   };
   return (
     <>
-      <navbar>
+      <navbar className={classes["election-title"]}>
         <h1>2023 Cumhurbaşkanlığı Seçimleri</h1>
       </navbar>
       <main>
-        <p>harita</p>
+        <img className={classes.map}></img>
+        <div className={classes["election-type"]}>
+          <p>{state.electionType}</p>
+        </div>
 
-        <div className="side-bar">
-          <h>{state.electionType}</h>
+        <div className={classes.sidebar}>
           <ResulList electionResults={dummy_list} />
         </div>
       </main>
       <footer>
-        <button className="d" onClick={changeResultHandler}>
+        <button
+          className={classes["election-button"]}
+          onClick={changeResultHandler}
+        >
           {state.text}
         </button>
       </footer>
