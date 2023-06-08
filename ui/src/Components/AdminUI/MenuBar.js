@@ -3,12 +3,11 @@ import classes from "./MenuBar.module.css";
 
 function MenuBar() {
   return (
-    <div className={classes.card}>
-      <div className={classes.title}>
-        <h2>Admin Panel</h2>
-      </div>
+    <div className={classes["menu-bar"]}>
+
+        <h2 className="title">Admin Panel</h2>
+
       <div className={classes.sidebar}>
-        {" "}
         <button>MainPage</button>
         <button>Upload Election</button>
       </div>

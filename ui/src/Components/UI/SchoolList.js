@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import classes from "./SchoolList.module.css";
+
 const SchoolList = (props) => {
   const [showBox, setShowBox] = useState({});
 
@@ -11,17 +12,20 @@ const SchoolList = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes["school-list-container"]}>
       {props.ballots.map((boxes) => (
-        <div  key={boxes.ballot_no}>
-          <button onClick={() => boxHandler(boxes.ballot_no)}>
+        <div key={boxes.ballot_no}>
+          <button
+            className={classes["box-button"]} // Add the class name here
+            onClick={() => boxHandler(boxes.ballot_no)}
+          >
             Sandık Numarası: {boxes.ballot_no}
           </button>
           {showBox[boxes.ballot_no] && (
             <div className={classes["box-results"]}>
               {boxes.results.map((candidates, index) => (
                 <p key={index}>
-                  {candidates[0]} : {candidates[1]}
+                  {candidates[0]}: {candidates[1]}
                 </p>
               ))}
             </div>

@@ -1,6 +1,6 @@
 import SchoolList from "./UI/SchoolList";
 import { useState } from "react";
-
+import classes from "./ResulList.module.css"
 const ResulList = (props) => {
   const [showSchool, setShowSchool] = useState({});
 
@@ -12,7 +12,7 @@ const ResulList = (props) => {
   };
 
   return (
-    <>
+    <div className={classes["results-container"]}>
       {props.electionResults.map((result, index) => (
         <div key={index}>
           <button onClick={() => detailHandler(result.schoolName)}>
@@ -23,7 +23,7 @@ const ResulList = (props) => {
           )}
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

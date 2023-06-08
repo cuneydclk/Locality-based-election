@@ -1,72 +1,80 @@
+/* MainPage.module.css */
+
 .election-title {
-  /* election-title */
   position: absolute;
-  width: 1002px;
-  height: 95px;
-  left: 112px;
   top: 37px;
-  background: #aabdff;
+  left: 112px;
+  width: fit-content;
+  padding: 8px 16px;
+  background-color: #aabdff;
+  border-radius: 8px;
 }
 
 .election-title h1 {
-  position: absolute;
-  width: 526px;
-  height: 44px;
-  left: 238px; /* Adjusted left position */
-  top: 25px; /* Adjusted top position */
   font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 44px;
+  font-size: 24px;
+  font-weight: bold;
   color: #000000;
+  margin: 0;
 }
 
 .election-type {
   position: absolute;
+  top: 84px;
+  left: 1155px;
   width: 312px;
   height: 84px;
-  left: 1155px;
-  top: 84px;
-  background: #d9d9d9;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 }
 
 .election-type p {
-  width: 296px;
-  height: 84px;
-  left: 8px; /* Adjusted left position */
-  top: 0; /* Adjusted top position */
   font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 35px;
-  line-height: 42px;
-  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
   color: #000000;
+  margin: 0;
 }
 
 .map {
   position: absolute;
+  top: 209px;
+  left: 112px;
   width: 1002px;
   height: 693px;
-  left: 112px;
-  top: 209px;
 }
 
 .sidebar {
   position: absolute;
+  top: 180px;
+  left: 1155px;
   width: 320px;
   height: 722px;
-  left: 1155px;
-  top: 180px;
-  background: #d9d9d9;
+  background-color: #d9d9d9;
+  border-radius: 8px;
 }
 
 .election-button {
   position: absolute;
+  top: 925px;
+  left: 212px;
   width: 578px;
   height: 45px;
-  left: 212px; /* Adjusted left position */
-  top: 925px;
-  background: #d9d9d9;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.election-button:hover {
+  background-color: #ccc;
 }

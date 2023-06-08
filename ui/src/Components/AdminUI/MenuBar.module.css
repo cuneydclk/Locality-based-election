@@ -1,22 +1,48 @@
-.card {
-
-
-  left: 32px;
+.menu-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: 100vh;
+  background-color: #333;
+  color: #fff;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .title {
-
-  width: 262px;
-  height: 120px;
-  left: 32px;
-  top: 108px;
-
-  background: #d9d9d9;
-  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
 .sidebar {
-  width: 262px;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 160px); /* Adjust the value based on your needs */
+}
 
-  background: #d9d9d9;
+.sidebar button {
+  margin-bottom: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar button:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
 }
