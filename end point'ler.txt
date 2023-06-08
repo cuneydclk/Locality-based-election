@@ -1,0 +1,6 @@
+Bütün milletvekilliği oylarını alma
+(get)http://localhost:3001/api/v1/vote/milletvekili/
+
+Teker teker milletvekilliği verisi girme
+(post)http://localhost:3001/api/v1/vote/milletvekili/
+
