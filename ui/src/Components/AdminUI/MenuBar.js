@@ -6,7 +6,7 @@ function MenuBar() {
     <div className={classes.card}>
       <div className={classes.title}>
         <h2>Admin Panel</h2>
-      </div >
+      </div>
       <div className={classes.sidebar}>
         {" "}
         <button>MainPage</button>
