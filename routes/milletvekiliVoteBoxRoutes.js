@@ -3,8 +3,10 @@ const router = express.Router()
 const voteBoxController = require('../controllers/voteBoxController')
 
 
-//bütün sonuçları döndürcek
 
 router
     .route('/')
-    .get(voteBoxController.getAllVoteBox);
+    .get(voteBoxController.getAllMilletvekiliVote)
+    .post(voteBoxController.postMilletvekiliVote);
+
+module.exports = router;

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const voteBoxSchema = new mongoose.Schema({
-  _id: mongoose.Types.ObjectId,
+const milletvekiliVoteSchema = new mongoose.Schema({
   "Sıra No": Number,
   "İl Adı": String,
   "İlçe Adı": String,
@@ -43,6 +42,6 @@ const voteBoxSchema = new mongoose.Schema({
   "ATA İTTİFAKI": Number
 });
 
-const VoteBox = mongoose.model('VoteBox', voteBoxSchema);
+const milletvekiliVote = mongoose.model('MilletvekiliVoteBoxs', milletvekiliVoteSchema);
 
-module.exports = VoteBox;
+module.exports = milletvekiliVote;
