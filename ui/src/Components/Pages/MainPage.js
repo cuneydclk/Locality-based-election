@@ -5,7 +5,7 @@ import { useReducer } from "react";
 const dummy_list = [
   {
     key: Math.random(),
-    schoolName: "Albay Çolak",
+    schoolName: "Altıntaş",
     ballot_list: [
       {
         ballot_no: "1001",

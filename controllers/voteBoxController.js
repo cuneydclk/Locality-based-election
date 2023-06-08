@@ -1,78 +1,74 @@
-const milletvekiliVoteBoxModel = require('../models/milletvekiliVoteboxModel');
-const cumhurBaskanligiVoteBoxModel = require('../models/cumhurBVoteboxModel');
-
-
+const milletvekiliVoteBoxModel = require("../models/milletvekiliVoteboxModel");
+const cumhurBaskanligiVoteBoxModel = require("../models/cumhurBVoteboxModel");
 
 exports.getAllMilletvekiliVote = async (req, res, next) => {
   try {
     const milletvekiliVote = await milletvekiliVoteBoxModel.find();
     res.status(200).json({
-      status: 'success',
+      status: "success",
       results: milletvekiliVote.length,
       data: {
-        milletvekiliVote
-      }
+        milletvekiliVote,
+      },
     });
   } catch (err) {
     res.status(404).json({
-      status: 'fail',
-      message: err
+      status: "fail",
+      message: err,
     });
   }
 };
-
 
 exports.postMilletvekiliVote = async (req, res, next) => {
   try {
     const newMilletvekiliVote = await milletvekiliVoteBoxModel.create(req.body);
     res.status(201).json({
-      status: 'success',
+      status: "success",
       data: {
-        milletvekiliVote: newMilletvekiliVote
-      }
+        milletvekiliVote: newMilletvekiliVote,
+      },
     });
   } catch (err) {
     res.status(400).json({
-      status: 'fail',
-      message: err
+      status: "fail",
+      message: err,
     });
   }
-}
-
-
+};
 
 exports.getAllCumhurBaskanligiVote = async (req, res, next) => {
   try {
     const cumhurBaskanligiVote = await cumhurBaskanligiVoteBoxModel.find();
     res.status(200).json({
-      status: 'success',
+      status: "success",
       results: cumhurBaskanligiVote.length,
       data: {
-        cumhurBaskanligiVote
-      }
+        cumhurBaskanligiVote,
+      },
     });
   } catch (err) {
     res.status(404).json({
-      status: 'fail',
-      message: err
+      status: "fail",
+      message: err,
     });
   }
 };
 
-
 exports.postCumhurBaskanligiVote = async (req, res, next) => {
   try {
-    const newCumhurBaskanligiVote = await cumhurBaskanligiVoteBoxModel.create(req.body);
+    const newCumhurBaskanligiVote = await cumhurBaskanligiVoteBoxModel.create(
+      req.body
+    );
     res.status(201).json({
-      status: 'success',
+      status: "success",
       data: {
-        cumhurBaskanligiVote: newCumhurBaskanligiVote
-      }
+        cumhurBaskanligiVote: newCumhurBaskanligiVote,
+      },
     });
   } catch (err) {
     res.status(400).json({
-      status: 'fail',
-      message: err
+      status: "fail",
+      message: err,
     });
   }
-}
+};
