@@ -23,7 +23,7 @@ function Map() {
     }
 
     // Fetch the GeoJSON file
-    fetch('/static/media/map.d229d9af4c3a35093e05.geojson')
+    fetch('./Data/map.geojson')
       .then(response => response.json())
       .then(geojsonData => {
         if (geojsonData && geojsonData.features) {
