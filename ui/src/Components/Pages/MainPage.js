@@ -96,7 +96,7 @@ const MainPage = (props) => {
       <div className="App">
   
         <div style={{  width: '64%', position: "absolute" , top: '230px', left: '130px'}}>
-            <Map  />
+        <Map />
         </div>
       </div>
         //<img className={classes.map}></img>
