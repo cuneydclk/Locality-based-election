@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import mapData from './Data/map.geojson';
 
 function Map() {
   useEffect(() => {
@@ -9,6 +10,10 @@ function Map() {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; OpenStreetMap contributors',
     }).addTo(map);
+
+    function a() {
+      console.log(mapData);
+    }
 
     // Add event listener for neighborhood click
     function onNeighborhoodClick(e) {
@@ -23,7 +28,7 @@ function Map() {
     }
 
     // Fetch the GeoJSON file
-    fetch('./Data/map.geojson')
+    fetch('/static/media/map.0c6fc7e3d4d8e77b7c2f.geojson')
       .then(response => response.json())
       .then(geojsonData => {
         if (geojsonData && geojsonData.features) {
@@ -46,6 +51,8 @@ function Map() {
         console.error('Error fetching GeoJSON data:', error);
       });
 
+    a();
+    
     return () => {
       // Clean up the map when the component unmounts
       map.remove();
