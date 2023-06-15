@@ -1,48 +1,19 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const cumhurBVoteSchema = new mongoose.Schema({
-  "Mahalle/Köy": {
+  schoolName: {
     type: String,
+    required: true,
   },
-  "Sandık No": {
-    type: String,
-  },
-  "Kayıtlı Seçmen Sayısı": {
-    type: Number,
-  },
-  "Oy Kullanan Seçmen Sayısı": {
-    type: Number,
-  },
-  "İtirazsız Geçerli Oy Sayısı": {
-    type: Number,
-  },
-  "İtirazlı Geçerli Oy Sayısı": {
-    type: Number,
-  },
-
-  "Toplam Geçerli Oy": {
-    type: Number,
-  },
-  "Toplam Geçersiz Oy": {
-    type: Number,
-  },
-  "RECEP TAYYİP ERDOĞAN": {
-    type: Number,
-  },
-  "MUHARREM İNCE": {
-    type: Number,
-  },
-  "KEMAL KILIÇDAROĞLU": {
-    type: Number,
-  },
-  "SİNAN OĞAN": {
-    type: Number,
-  },
+  ballot_list: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Ballot',
+      required: true,
+    },
+  ],
 });
 
-const cumhurBaskanligiVote = mongoose.model(
-  "CumhurBVoteBox",
-  cumhurBVoteSchema
-);
+const cumhurBVote = mongoose.model('CumhurBVote', cumhurBVoteSchema);
 
-module.exports = cumhurBaskanligiVote;
+module.exports = cumhurBVote;

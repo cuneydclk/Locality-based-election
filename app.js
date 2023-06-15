@@ -17,8 +17,9 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use('/api/v1/vote/milletvekili', milletvekiliVoteBoxRouter);
 app.use('/api/v1/vote/cumhurB', cumhurBaskanligiVoteBoxRouter);
+app.use('/api/v1/vote/milletvekili', milletvekiliVoteBoxRouter);
+
 
 
 
