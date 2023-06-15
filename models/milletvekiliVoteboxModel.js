@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Ballot = require('./ballotModel');
 
 const milletvekiliVoteSchema = new mongoose.Schema({
   schoolName: {
@@ -7,7 +6,7 @@ const milletvekiliVoteSchema = new mongoose.Schema({
     required: true,
   },
   ballot_list: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     ref: 'Ballot',
     required: true,
   },

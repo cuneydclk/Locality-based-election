@@ -1,6 +1,8 @@
-Bütün milletvekilliği oylarını alma
-(get)http://localhost:3001/api/v1/vote/milletvekili/
+bütün cumhurbaşkanlığı oylarını çekme
+(get)http://127.0.0.1:3001/api/v1/vote/cumhurB
 
-Teker teker milletvekilliği verisi girme
-(post)http://localhost:3001/api/v1/vote/milletvekili/
+mahalleye ait sandıkları çekme
+(get)http://127.0.0.1:3001/api/v1/vote/cumhurB/mahalleAdı%20MAH.     (url encode olduğu için boşluk yerine %20 var)
 
+sadece belirli sandık numarasını çekme
+(get)http://127.0.0.1:3001/api/v1/vote/cumhurB/box/1001

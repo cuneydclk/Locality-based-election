@@ -9,5 +9,17 @@ router
     .get(voteBoxController.getAllCumhurBaskanligiVote)
     .post(voteBoxController.postCumhurBaskanligiVote);
 
+router
+    .route('/array')
+    .post(voteBoxController.postCumhurBaskanligiVoteArray);
+
+router
+    .route('/:mahalleName')
+    .get(voteBoxController.getCumhurBaskanligiVoteMahalle);
+
+router
+    .route('/box/:boxNumber')
+    .get(voteBoxController.getCumhurBaskanligiVoteBoxNumber);
+
 
 module.exports = router;
