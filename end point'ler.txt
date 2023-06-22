@@ -6,3 +6,18 @@ mahalleye ait sandıkları çekme
 
 sadece belirli sandık numarasını çekme
 (get)http://127.0.0.1:3001/api/v1/vote/cumhurB/box/1001
+
+
+
+
+
+
+bütün milletvekili oylarını çekme
+(get)http://127.0.0.1:3001/api/v1/vote/milletvekili
+
+mahalleye ait sandıkları çekme (milletvekili)
+(get)http://127.0.0.1:3001/api/v1/vote/milletvekili/mahalleAdı
+
+
+sadece belirlik sandık numarasını çekme (milletvekili)
+(get)http://127.0.0.1:3001/api/v1/vote/milletvekili/box/1001

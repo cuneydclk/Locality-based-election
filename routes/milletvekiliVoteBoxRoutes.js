@@ -9,4 +9,19 @@ router
     .get(voteBoxController.getAllMilletvekiliVote)
     .post(voteBoxController.postMilletvekiliVote);
 
+
+router
+    .route('/array')
+    .post(voteBoxController.postMilletvekilligiVoteArray);
+
+
+router
+    .route('/:mahalleName')
+    .get(voteBoxController.getMilletvekiliVoteMahalle);
+
+
+router
+    .route('/box/:boxNumber')
+    .get(voteBoxController.getMilletvekiliVoteBoxNumber);
+
 module.exports = router;
