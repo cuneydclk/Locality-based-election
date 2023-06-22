@@ -1,9 +1,12 @@
 import "./LoginForm.css";
-import { useState } from "react";
+import { useState,useEffect,useContext } from "react";
+import AuthContext from "../../store/auth-context";
 
 const LoginPage = (props) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const ctx=useContext(AuthContext);
+  
 
   const submitHandler = (event) => {
     event.preventDefault();

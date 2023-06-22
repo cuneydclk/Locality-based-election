@@ -1,0 +1,18 @@
+.main{
+    display: flex;
+    
+}
+
+.main label{
+    color: black;
+}
+.right{
+  
+
+    margin-left: 400px;
+}
+.election-cart{
+    background-color: green;
+    width: 500px;
+    padding: 50px;
+}
