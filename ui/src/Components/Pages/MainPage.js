@@ -1,7 +1,8 @@
 import ResulList from "../ResultList";
 import classes from "./MainPage.module.css";
 import { useReducer } from "react";
-import Map from './Map';
+import Map from "./Map";
+
 
 const dummy_list = [
   {
@@ -53,7 +54,8 @@ const dummy_list = [
     ],
   },
 ];
-const MainPage = (props) => {
+
+const MainPage = () => {
   const reducer = (state, action) => {
     if (action.type === "mv") {
       return {
@@ -93,13 +95,19 @@ const MainPage = (props) => {
         <h1>2023 Cumhurbaşkanlığı Seçimleri</h1>
       </navbar>
       <main>
-      <div className="App">
-  
-        <div style={{  width: '64%', position: "absolute" , top: '230px', left: '130px'}}>
-        <Map />
+        <div className="App">
+          <div
+            style={{
+              width: "64%",
+              position: "absolute",
+              top: "230px",
+              left: "130px",
+            }}
+          >
+            <Map />
+          </div>
         </div>
-      </div>
-        //<img className={classes.map}></img>
+
         <div className={classes["election-type"]}>
           <p>{state.electionType}</p>
         </div>
