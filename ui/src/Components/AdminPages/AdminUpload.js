@@ -2,13 +2,13 @@ import MenuBar from "../AdminUI/MenuBar";
 import classes from "./AdminUpload.module.css";
 import { useRef } from "react";
 const AdminUpload = (props) => {
-  const nameRef = useRef(null);
-  const dateRef = useRef(null);
-  const dscRef = useRef(null);
+  const nameRef = useRef("");
+  const dateRef = useRef("");
+  const dscRef = useRef("");
   const fileRef = useRef(null);
 
   const sendHandler = (event) => {
-    
+    event.preventDefault();
   };
   return (
     <div className={classes.main}>
@@ -16,7 +16,7 @@ const AdminUpload = (props) => {
 
       <div className={classes.right}>
         <h1>Upload Election Page </h1>
-        <div className={classes["election-cart"]}>
+        <form className={classes["election-cart"]}>
           <label>Election's name</label>
           <input type="text" ref={nameRef}></input>
 
@@ -28,7 +28,7 @@ const AdminUpload = (props) => {
 
           <input ref={fileRef} type="file"></input>
           <button onClick={sendHandler}>Upload Election</button>
-        </div>
+        </form>
       </div>
     </div>
   );

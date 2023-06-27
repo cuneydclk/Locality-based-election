@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
-        {!ctx.isLogin && <Route path="/upload" element={<AdminUpload />} />}
+        {ctx.isLogin && <Route path="/upload" element={<AdminUpload />} />}
 
         {ctx.isLogin && <Route path="/adminMain" element={<AdminMainPage />} />}
       </Routes>

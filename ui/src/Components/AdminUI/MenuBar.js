@@ -1,15 +1,40 @@
 import React from "react";
 import classes from "./MenuBar.module.css";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../store/auth-context";
 
 function MenuBar() {
+  const navigate = useNavigate();
+  const ctx = useContext(AuthContext);
   return (
     <div className={classes["menu-bar"]}>
-
-        <h2 className="title">Admin Panel</h2>
+      <h2 className="title">Admin Panel</h2>
 
       <div className={classes.sidebar}>
-        <button>MainPage</button>
-        <button>Upload Election</button>
+        <button
+          onClick={() => {
+            navigate("/adminMain");
+          }}
+        >
+          MainPage
+        </button>
+        <button
+          onClick={() => {
+            navigate("/upload");
+          }}
+        >
+          Upload Election
+        </button>
+        <button
+          className={classes.logout}
+          onClick={() => {
+            ctx.onLogout();
+            navigate("/");
+          }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

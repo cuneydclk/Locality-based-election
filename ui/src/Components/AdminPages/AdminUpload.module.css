@@ -1,18 +1,74 @@
-.main{
-    display: flex;
-    
+.main {
+  display: flex;
+  flex-direction: row;
+
+}
+.main h1 {
+  background-color: #d9d9d9;
+  /* Upload Election Page */
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 77px;
+  text-align: center;
+
+  color: #000000;
+  /* Election box */
+  padding: 5px 30px;
 }
 
-.main label{
-    color: black;
-}
-.right{
-  
+.main label {
+  /* Election’s name: */
 
-    margin-left: 400px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 44px;
+
+  text-align: center;
+
+  color: #000000;
 }
-.election-cart{
-    background-color: green;
-    width: 500px;
-    padding: 50px;
+.right {
+  margin-left: 400px;
+  text-align: center;
+}
+.election-cart {
+  background-color: #d9d9d9;
+  width: 900px;
+  padding: 50px;
+  height: auto;
+}
+
+.main input {
+  height: 60px;
+}
+
+.election-cart button {
+  margin-left: 50%;
+  margin-right: auto;
+
+  background-color: #662b2b;
+
+  /* Upload Election */
+
+  width: 267px;
+  height: 44px;
+  left: 1028px;
+  top: 769px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+
+  color: #ffffff;
+
+  border: 1px solid #000000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }

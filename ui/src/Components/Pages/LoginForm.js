@@ -1,12 +1,19 @@
 import "./LoginForm.css";
-import { useState,useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../store/auth-context";
+import { useNavigate } from "react-router-dom";
 
-const LoginPage = (props) => {
+const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const ctx=useContext(AuthContext);
-  
+  const [user, setUser] = useState(["admin", "1234"]);
+  const ctx = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    //burada sunucudan admin çekilecek
+    setUser(["admin", "1234"]);
+  }, []);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -14,8 +21,10 @@ const LoginPage = (props) => {
       console.log("Invalid inputs!");
       return;
     }
-
-    props.adminValid(userName, password);
+    if (userName === user[0] && password === user[1]) {
+      ctx.onLogin();
+      navigate("/upload");
+    }
   };
 
   const userNameHandler = (event) => {
