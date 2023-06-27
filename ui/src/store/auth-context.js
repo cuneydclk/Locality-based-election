@@ -11,9 +11,11 @@ export const AuthContextProvider = (props) => {
 
   const loginHandler = () => {
     setIsLogin(true);
+    localStorage.setItem("login",true)
   };
   const logoutHandler = () => {
     setIsLogin(false);
+    localStorage.removeItem("login")
   };
 
   return (

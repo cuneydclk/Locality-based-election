@@ -1,5 +1,5 @@
 import "./App.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AuthContext from "./store/auth-context";
 
 import LoginPage from "./Components/Pages/LoginForm";
@@ -9,6 +9,12 @@ import AdminMainPage from "./Components/AdminPages/AdminMainPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const ctx = useContext(AuthContext);
+  useEffect(() => {
+    const item = localStorage.getItem("login");
+    if (item) {
+      ctx.onLogin();
+    }
+  });
   return (
     <Router>
       <Routes>

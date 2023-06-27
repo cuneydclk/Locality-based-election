@@ -23,7 +23,10 @@ const LoginPage = () => {
     }
     if (userName === user[0] && password === user[1]) {
       ctx.onLogin();
-      navigate("/upload");
+      navigate("/adminMain");
+    }
+    else{
+      console.log("Username or password is incorrect")
     }
   };
 

@@ -33,13 +33,13 @@
   color: #000000;
 }
 .right {
-  margin-left: 400px;
+  margin-left: 200px;
   text-align: center;
 }
 .election-cart {
   background-color: #d9d9d9;
-  width: 900px;
-  padding: 50px;
+
+  padding: 50px 100px;
   height: auto;
 }
 

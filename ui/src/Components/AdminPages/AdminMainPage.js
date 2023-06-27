@@ -1,9 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import MenuBar from "../AdminUI/MenuBar";
 function AdminMainPage() {
-  return (
-    <div>AdminMainPage</div>
-  )
+  return <MenuBar />;
 }
 
-export default AdminMainPage
+export default AdminMainPage;
