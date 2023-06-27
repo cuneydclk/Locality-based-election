@@ -5,7 +5,7 @@ import mapData from "./Data/map.geojson";
 
 function Map(props) {
   useEffect(() => {
-    const map = L.map("map").setView([38.2987, 26.6803], 10);
+    const map = L.map("map").setView([38.2987, 26.6803], 11);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "Map data &copy; OpenStreetMap contributors",
@@ -60,7 +60,7 @@ function Map(props) {
     };
   }, []);
 
-  return <div id="map" style={{ height: "400px" }}></div>;
+  return <div id="map" style={{ height: "800px" }}></div>;
 }
 
 function getRandomColor(index) {

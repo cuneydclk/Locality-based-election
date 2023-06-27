@@ -5,13 +5,16 @@
 }
 .election-title {
   text-align: center;
-  width: 400px;
+  width: 1000px;
   margin-left: auto;
   margin-right: auto;
   padding: 8px 16px;
   background-color: #aabdff;
   border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
+
 .main {
   display: flex;
   flex-direction: row;
@@ -19,7 +22,7 @@
 }
 
 .map {
-  width: 800px;
+  width: 1000px;
   margin-top: auto;
   margin-bottom: auto;
 
@@ -29,7 +32,7 @@
 
 .election-title h1 {
   font-family: "Inter";
-  font-size: 24px;
+  font-size: 40px;
   font-weight: bold;
   color: #000000;
   margin: 0;
@@ -45,6 +48,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 8px;
+}
+.right{
+  margin-right: 100px;
+  margin-left: 50px;
 }
 
 .election-type p {
@@ -83,4 +90,9 @@
 
 .election-button:hover {
   background-color: #ccc;
+}
+
+.bottom{
+  margin-left: auto;
+  margin-right: auto;
 }

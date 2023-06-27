@@ -117,9 +117,8 @@ const MainPage = () => {
       <div className={classes.main}>
         <div className={classes.map}>
           <Map mapName={mapHandler} />
-          <p>hey</p>
         </div>
-        <div>
+        <div className={classes.right}>
           {" "}
           <div className={classes["election-type"]}>
             <p>{state.electionType}</p>
@@ -129,7 +128,7 @@ const MainPage = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className={classes.bottom}>
         <button
           className={classes["election-button"]}
           onClick={changeResultHandler}
