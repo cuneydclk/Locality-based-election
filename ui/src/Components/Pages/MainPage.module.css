@@ -1,13 +1,27 @@
 /* MainPage.module.css */
+.main-page{
+  display: flex;
+  flex-direction: column;
 
+}
 .election-title {
-  position: absolute;
-  top: 37px;
-  left: 112px;
-  width: fit-content;
+  text-align: center;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 8px 16px;
   background-color: #aabdff;
   border-radius: 8px;
+}
+.main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.map{
+  width: 450px;
+
 }
 
 .election-title h1 {
@@ -19,7 +33,7 @@
 }
 
 .election-type {
-  position: absolute;
+
   top: 84px;
   left: 1155px;
   width: 312px;
@@ -39,16 +53,10 @@
   margin: 0;
 }
 
-.map {
-  position: absolute;
-  top: 209px;
-  left: 112px;
-  width: 1002px;
-  height: 693px;
-}
+
 
 .sidebar {
-  position: absolute;
+
   top: 180px;
   left: 1155px;
   width: 320px;
@@ -58,7 +66,7 @@
 }
 
 .election-button {
-  position: absolute;
+
   top: 925px;
   left: 212px;
   width: 578px;

@@ -108,43 +108,35 @@ const MainPage = () => {
   const mapHandler = (mapname) => {
     setNeighborhoodName(mapname);
     console.log(mapname);
-    console.log(pList)
   };
   return (
-    <div>
-      <navbar className={classes["election-title"]}>
+    <div className={classes["main-page"]}>
+      <div className={classes["election-title"]}>
         <h1>2023 Cumhurbaşkanlığı Seçimleri</h1>
-      </navbar>
-      <main>
-        <div className="App">
-          <div
-            style={{
-              width: "64%",
-              position: "absolute",
-              top: "230px",
-              left: "130px",
-            }}
-          >
-            <Map mapName={mapHandler} />
+      </div>
+      <div className={classes.main}>
+        <div className={classes.map}>
+          <Map mapName={mapHandler} />
+          <p>hey</p>
+        </div>
+        <div>
+          {" "}
+          <div className={classes["election-type"]}>
+            <p>{state.electionType}</p>
+          </div>
+          <div className={classes.sidebar}>
+            <ResulList electionResults={dummy_list} />
           </div>
         </div>
-
-        <div className={classes["election-type"]}>
-          <p>{state.electionType}</p>
-        </div>
-
-        <div className={classes.sidebar}>
-          <ResulList electionResults={dummy_list} />
-        </div>
-      </main>
-      <footer>
+      </div>
+      <div>
         <button
           className={classes["election-button"]}
           onClick={changeResultHandler}
         >
           {state.text}
         </button>
-      </footer>
+      </div>
     </div>
   );
 };
