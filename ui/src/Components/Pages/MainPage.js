@@ -1,8 +1,8 @@
 import ResulList from "../ResultList";
 import classes from "./MainPage.module.css";
-import { useReducer } from "react";
+import { useReducer, useState, useEffect } from "react";
+import axios from "axios";
 import Map from "./Map";
-
 
 const dummy_list = [
   {
@@ -56,6 +56,22 @@ const dummy_list = [
 ];
 
 const MainPage = () => {
+  const [neighborhoodName, setNeighborhoodName] = useState("");
+  const [electionList, setElectionList] = useState([]);
+  const [pList, setPlist] = useState([]);
+  const [cList, setClist] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://127.0.0.1:3001/api/v1/vote/cumhurB").then((response) => {
+      setClist(response.data.data.cumhurBaskanligiVote);
+    });
+    axios
+      .get("http://127.0.0.1:3001/api/v1/vote/milletvekili")
+      .then((response) => {
+        setPlist(response.data.data.milletvekiliVote);
+      });
+  }, []);
+
   const reducer = (state, action) => {
     if (action.type === "mv") {
       return {
@@ -89,8 +105,13 @@ const MainPage = () => {
       dispatch({ type: "mv" });
     }
   };
+  const mapHandler = (mapname) => {
+    setNeighborhoodName(mapname);
+    console.log(mapname);
+    console.log(pList)
+  };
   return (
-    <>
+    <div>
       <navbar className={classes["election-title"]}>
         <h1>2023 Cumhurbaşkanlığı Seçimleri</h1>
       </navbar>
@@ -104,7 +125,7 @@ const MainPage = () => {
               left: "130px",
             }}
           >
-            <Map />
+            <Map mapName={mapHandler} />
           </div>
         </div>
 
@@ -124,7 +145,7 @@ const MainPage = () => {
           {state.text}
         </button>
       </footer>
-    </>
+    </div>
   );
 };
 

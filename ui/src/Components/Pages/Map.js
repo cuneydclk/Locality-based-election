@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import mapData from './Data/map.geojson';
+import React, { useEffect } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import mapData from "./Data/map.geojson";
 
-function Map() {
+function Map(props) {
   useEffect(() => {
-    const map = L.map('map').setView([38.2987, 26.6803], 10);
+    const map = L.map("map").setView([38.2987, 26.6803], 10);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; OpenStreetMap contributors',
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "Map data &copy; OpenStreetMap contributors",
     }).addTo(map);
 
     function a() {
@@ -18,7 +18,8 @@ function Map() {
     // Add event listener for neighborhood click
     function onNeighborhoodClick(e) {
       const clickedFeature = e.target.feature;
-      console.log('Neighborhood clicked:', clickedFeature.properties);
+      // console.log('Neighborhood clicked:', clickedFeature.properties);
+      props.mapName(Object.keys(clickedFeature.properties)[0]);
 
       // Get the centroid of the clicked feature
       const centroid = L.geoJSON(clickedFeature).getBounds().getCenter();
@@ -28,38 +29,38 @@ function Map() {
     }
 
     // Fetch the GeoJSON file
-    fetch('/static/media/map.0c6fc7e3d4d8e77b7c2f.geojson')
-      .then(response => response.json())
-      .then(geojsonData => {
+    fetch("/static/media/map.0c6fc7e3d4d8e77b7c2f.geojson")
+      .then((response) => response.json())
+      .then((geojsonData) => {
         if (geojsonData && geojsonData.features) {
           geojsonData.features.forEach((feature, index) => {
             const neighborhoodLayer = L.geoJSON(feature, {
               style: {
                 fillColor: getRandomColor(index),
                 fillOpacity: 0.95, // Adjust the transparency here
-                color: 'black',
+                color: "black",
                 weight: 1,
               },
               onEachFeature: (feature, layer) => {
-                layer.on('click', onNeighborhoodClick);
+                layer.on("click", onNeighborhoodClick);
               },
             }).addTo(map);
           });
         }
       })
-      .catch(error => {
-        console.error('Error fetching GeoJSON data:', error);
+      .catch((error) => {
+        console.error("Error fetching GeoJSON data:", error);
       });
 
     a();
-    
+
     return () => {
       // Clean up the map when the component unmounts
       map.remove();
     };
   }, []);
 
-  return <div id="map" style={{ height: '400px' }}></div>;
+  return <div id="map" style={{ height: "400px" }}></div>;
 }
 
 function getRandomColor(index) {
@@ -90,9 +91,9 @@ function getRandomColor(index) {
       g = hueToRgb(p, q, h);
       b = hueToRgb(p, q, h - 1 / 3);
     }
-    const toHex = x => {
+    const toHex = (x) => {
       const hex = Math.round(x * 255).toString(16);
-      return hex.length === 1 ? '0' + hex : hex;
+      return hex.length === 1 ? "0" + hex : hex;
     };
     return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
   };
