@@ -3,6 +3,7 @@ import classes from "./MainPage.module.css";
 import { useReducer, useState, useEffect } from "react";
 import axios from "axios";
 import Map from "./Map";
+import Test from "../test/test";
 
 const dummy_list = [
   {
@@ -57,20 +58,8 @@ const dummy_list = [
 
 const MainPage = () => {
   const [neighborhoodName, setNeighborhoodName] = useState("");
-  const [electionList, setElectionList] = useState([]);
   const [pList, setPlist] = useState([]);
   const [cList, setClist] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://127.0.0.1:3001/api/v1/vote/cumhurB").then((response) => {
-      setClist(response.data.data.cumhurBaskanligiVote);
-    });
-    axios
-      .get("http://127.0.0.1:3001/api/v1/vote/milletvekili")
-      .then((response) => {
-        setPlist(response.data.data.milletvekiliVote);
-      });
-  }, []);
 
   const reducer = (state, action) => {
     if (action.type === "mv") {
@@ -78,14 +67,12 @@ const MainPage = () => {
         type: "mv",
         text: "Milletvekili Sonuçlarını Göster",
         electionType: "Cumhurbaşkanlığı Sonuçları",
-        resultList: { dummy_list },
       };
     } else if (action.type === "cb") {
       return {
         type: "cb",
         text: "Cumhurbaşkanlığı sonucunu göster",
         electionType: "Milletvekili Sonuçları",
-        resultList: { dummy_list },
       };
     }
     return state;
@@ -95,7 +82,6 @@ const MainPage = () => {
     type: "mv",
     electionType: "Cumhurbaşkanlığı Sonuçları",
     text: "Milletvekili Sonuçlarını Göster",
-    resultList: { dummy_list },
   });
 
   const changeResultHandler = (event) => {
@@ -107,8 +93,17 @@ const MainPage = () => {
   };
   const mapHandler = (mapname) => {
     setNeighborhoodName(mapname);
-    console.log(mapname);
   };
+  useEffect(() => {
+    axios.get("http://127.0.0.1:3001/api/v1/vote/cumhurB").then((response) => {
+      setClist(response.data.data.cumhurBaskanligiVote);
+    });
+    axios
+      .get("http://127.0.0.1:3001/api/v1/vote/milletvekili")
+      .then((response) => {
+        setPlist(response.data.data.milletvekiliVote);
+      });
+  }, []);
   return (
     <div className={classes["main-page"]}>
       <div className={classes["election-title"]}>
@@ -124,7 +119,16 @@ const MainPage = () => {
             <p>{state.electionType}</p>
           </div>
           <div className={classes.sidebar}>
-            <ResulList electionResults={dummy_list} />
+            { <ResulList
+              electionResults={dummy_list}
+              neighborhoodName={neighborhoodName}
+              electionType={state.electionType}
+  />  }
+            <Test
+              electionResults={[cList, pList]}
+              electionType={state.type}
+              neighborhoodName={neighborhoodName}
+            />
           </div>
         </div>
       </div>

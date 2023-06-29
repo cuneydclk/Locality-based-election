@@ -4,6 +4,7 @@ import classes from "./ResulList.module.css"
 const ResulList = (props) => {
   const [showSchool, setShowSchool] = useState({});
 
+
   const detailHandler = (schoolName) => {
     setShowSchool((prevState) => ({
       ...prevState,
