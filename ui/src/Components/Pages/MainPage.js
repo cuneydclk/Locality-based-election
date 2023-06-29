@@ -55,60 +55,42 @@ const dummy_list = [
   },
 ];
 
+
 const MainPage = () => {
   const [neighborhoodName, setNeighborhoodName] = useState("");
-  const [electionList, setElectionList] = useState([]);
   const [pList, setPlist] = useState([]);
   const [cList, setClist] = useState([]);
+  const [electionT, setElectionT] = useState("Cumhurbaşkanı Sonuçları");
+  const [text, setText] = useState("Milletvekili Sonuçlarını Göster");
+  const [eType, setEType] = useState("mv");
 
-  useEffect(() => {
-    axios.get("http://127.0.0.1:3001/api/v1/vote/cumhurB").then((response) => {
-      setClist(response.data.data.cumhurBaskanligiVote);
-    });
-    axios
-      .get("http://127.0.0.1:3001/api/v1/vote/milletvekili")
-      .then((response) => {
-        setPlist(response.data.data.milletvekiliVote);
-      });
-  }, []);
 
-  const reducer = (state, action) => {
-    if (action.type === "mv") {
-      return {
-        type: "mv",
-        text: "Milletvekili Sonuçlarını Göster",
-        electionType: "Cumhurbaşkanlığı Sonuçları",
-        resultList: { dummy_list },
-      };
-    } else if (action.type === "cb") {
-      return {
-        type: "cb",
-        text: "Cumhurbaşkanlığı sonucunu göster",
-        electionType: "Milletvekili Sonuçları",
-        resultList: { dummy_list },
-      };
-    }
-    return state;
-  };
 
-  const [state, dispatch] = useReducer(reducer, {
-    type: "mv",
-    electionType: "Cumhurbaşkanlığı Sonuçları",
-    text: "Milletvekili Sonuçlarını Göster",
-    resultList: { dummy_list },
-  });
-
-  const changeResultHandler = (event) => {
-    if (state.type === "mv") {
-      dispatch({ type: "cb" });
-    } else {
-      dispatch({ type: "mv" });
+  const changeResultHandler = () => {
+    if (eType === "mv") {
+      setText("Cumhurbaşkanlığı Sonuçlarını göster");
+      setElectionT("Milletvekili Sonuçları");
+      setEType("cb");
+    } else if (eType === "cb") {
+      setText("Milletvekili Sonuçlarını göster");
+      setElectionT("Cumhurbaşkanlığı Sonuçları");
+      setEType("mv");
     }
   };
   const mapHandler = (mapname) => {
     setNeighborhoodName(mapname);
-    console.log(mapname);
   };
+  useEffect(() => {
+    axios.get("http://127.0.0.1:3001/api/v1/vote/cumhurB").then((response) => {
+      setClist(response.data.data);
+    });
+    axios
+      .get("http://127.0.0.1:3001/api/v1/vote/milletvekili")
+      .then((response) => {
+        setPlist(response.data.data);
+      });
+  }, []);
+
   return (
     <div className={classes["main-page"]}>
       <div className={classes["election-title"]}>
@@ -121,10 +103,14 @@ const MainPage = () => {
         <div className={classes.right}>
           {" "}
           <div className={classes["election-type"]}>
-            <p>{state.electionType}</p>
+            <p>{electionT}</p>
           </div>
           <div className={classes.sidebar}>
-            <ResulList electionResults={dummy_list} />
+            <ResulList
+              electionResults={[cList, pList]}
+              neighborhoodName={neighborhoodName}
+              electionType={eType}
+            />
           </div>
         </div>
       </div>
@@ -133,7 +119,7 @@ const MainPage = () => {
           className={classes["election-button"]}
           onClick={changeResultHandler}
         >
-          {state.text}
+          {text}
         </button>
       </div>
     </div>
