@@ -147,57 +147,57 @@ exports.getMilletvekiliVoteMahalle = async (req, res, next) => {
   try {
     const milletvekiliVote = await milletvekiliVoteBoxModel.find({ mahalleName: req.params.mahalleName });
 
-    const transformedVotes = milletvekiliVote.map((vote) => {
-      const voteCounts = [
-        { "millet": vote.millet },
-        { "hakPar": vote.hakPar },
-        { "tkp": vote.tkp },
-        { "tkh": vote.tkh },
-        { "solParti": vote.solParti },
-        { "gencParti": vote.gencParti },
-        { "memleket": vote.memleket },
-        { "bbp": vote.bbp },
-        { "akParti": vote.akParti },
-        { "yenidenRefah": vote.yenidenRefah },
-        { "mhp": vote.mhp },
-        { "yesilSol": vote.yesilSol },
-        { "ab": vote.ab },
-        { "anap": vote.anap },
-        { "yp": vote.yp },
-        { "hkp": vote.hkp },
-        { "milliYol": vote.milliYol },
-        { "vatanPartisi": vote.vatanPartisi },
-        { "gbp": vote.gbp },
-        { "chp": vote.chp },
-        { "iyiParti": vote.iyiParti },
-        { "ap": vote.ap },
-        { "zaferPartisi": vote.zaferPartisi }
-      ];
-
-      return {
-        _id: vote._id,
-        mahalleName: vote.mahalleName,
-        boxNumber: vote.boxNumber,
-        totalVote: vote.totalVote,
-        voteCounts: voteCounts,
-        __v: vote.__v
+    const organizedData = milletvekiliVote.map((vote) => {
+      const ballot = {
+        ballot_no: vote.boxNumber.toString(),
+        results: [
+          { name: 'Millet', vote: vote.millet.toString() },
+          { name: 'Hak-Par', vote: vote.hakPar.toString() },
+          { name: 'TKP', vote: vote.tkp.toString() },
+          { name: 'TKH', vote: vote.tkh.toString() },
+          { name: 'Sol Parti', vote: vote.solParti.toString() },
+          { name: 'Genç Parti', vote: vote.gencParti.toString() },
+          { name: 'Memleket Partisi', vote: vote.memleket.toString() },
+          { name: 'BBP', vote: vote.bbp.toString() },
+          { name: 'Ak Parti', vote: vote.akParti.toString() },
+          { name: 'Yeniden Refah Partisi', vote: vote.yenidenRefah.toString() },
+          { name: 'MHP', vote: vote.mhp.toString() },
+          { name: 'Yeşil Sol', vote: vote.yesilSol.toString() },
+          { name: 'AB', vote: vote.ab.toString() },
+          { name: 'ANAP', vote: vote.anap.toString() },
+          { name: 'YP', vote: vote.yp.toString() },
+          { name: 'HKP', vote: vote.hkp.toString() },
+          { name: 'Milli Yol', vote: vote.milliYol.toString() },
+          { name: 'Vatan Partisi', vote: vote.vatanPartisi.toString() },
+          { name: 'GBP', vote: vote.gbp.toString() },
+          { name: 'CHP', vote: vote.chp.toString() },
+          { name: 'İYİ Parti', vote: vote.iyiParti.toString() },
+          { name: 'AP', vote: vote.ap.toString() },
+          { name: 'Zafer Partisi', vote: vote.zaferPartisi.toString() },
+        ],
       };
+
+      return ballot;
     });
 
+    const responseData = {
+      mahalleName: req.params.mahalleName,
+      ballot_list: organizedData,
+    };
+
     res.status(200).json({
-      status: "success",
-      results: transformedVotes.length,
-      data: {
-        milletvekiliVote: transformedVotes,
-      },
+      status: 'success',
+      results: organizedData.length,
+      data: responseData,
     });
   } catch (err) {
     res.status(404).json({
-      status: "fail",
+      status: 'fail',
       message: err,
     });
   }
 };
+
 
 
 exports.getMilletvekiliVoteBoxNumber = async (req, res, next) => {
@@ -361,38 +361,40 @@ exports.getCumhurBaskanligiVoteMahalle = async (req, res, next) => {
   try {
     const cumhurBaskanligiVote = await cumhurBaskanligiVoteBoxModel.find({ mahalleName: req.params.mahalleName });
     
-    const transformedVotes = cumhurBaskanligiVote.map((vote) => {
-      const voteCounts = [
-        { "rte": vote.rte },
-        { "ince": vote.ince },
-        { "kemal": vote.kemal },
-        { "sinan": vote.sinan }
-      ];
-      
-      return {
-        _id: vote._id,
-        mahalleName: vote.mahalleName,
-        boxNumber: vote.boxNumber,
-        totalVote: vote.totalVote,
-        voteCounts: voteCounts,
-        __v: vote.__v
+    const organizedData = cumhurBaskanligiVote.map((vote) => {
+      const ballot = {
+        ballot_no: vote.boxNumber.toString(),
+        results: [
+          { name: 'Recep Tayyip Erdogan', vote: vote.rte.toString() },
+          { name: 'Muharram Ince', vote: vote.ince.toString() },
+          { name: 'Kemal Kılıçdaroğlu', vote: vote.kemal.toString() },
+          { name: 'Sinan Oğan', vote: vote.sinan.toString() },
+        ],
       };
+      
+      return ballot;
     });
     
+    const responseData = {
+      mahalleName: req.params.mahalleName,
+      ballot_list: organizedData,
+    };
+    
     res.status(200).json({
-      status: "success",
-      results: transformedVotes.length,
+      status: 'success',
+      results: organizedData.length,
       data: {
-        cumhurBaskanligiVote: transformedVotes,
+        cumhurBaskanligiVote: responseData,
       },
     });
   } catch (err) {
     res.status(404).json({
-      status: "fail",
+      status: 'fail',
       message: err,
     });
   }
 };
+
 
 
 

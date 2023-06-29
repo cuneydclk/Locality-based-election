@@ -1,19 +1,23 @@
 const catchAsync = require('../utils/catchAsync');
+const Admin = require('../models/adminModel');
+
 
 
 
 exports.createAdmin = catchAsync(async (req, res, next) => {
-    const { name, surname, password } = req.body;
-    const newAdmin = new Admin({
-      name,
-      surname,
-      password
-    });
-    await newAdmin.save();
-    res.status(200).json({
+  try {
+    const { username, password } = req.body;
+    const admin = await Admin.create({ username, password });
+    res.status(201).json({
       status: "success",
       data: {
-        newAdmin,
+        admin,
       },
     });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
 });

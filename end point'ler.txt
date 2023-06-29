@@ -21,3 +21,24 @@ mahalleye ait sandıkları çekme (milletvekili)
 
 sadece belirlik sandık numarasını çekme (milletvekili)
 (get)http://127.0.0.1:3001/api/v1/vote/milletvekili/box/1001
+
+
+
+
+
+kullanıcı yaratma 
+(post)http://127.0.0.1:3001/api/v1/login/createAdmin
+{
+    "username":"",
+    "password":""
+}
+
+
+
+giriş yapma
+(post)http://127.0.0.1:3001/api/v1/login/
+{
+    "username":"",
+    "password":""
+}
+
