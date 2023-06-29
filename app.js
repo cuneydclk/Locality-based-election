@@ -5,6 +5,7 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const milletvekiliVoteBoxRouter = require('./routes/milletvekiliVoteBoxRoutes');
 const cumhurBaskanligiVoteBoxRouter = require('./routes/cumhurBVoteBoxRoutes');
+const loginRouter = require('./routes/loginRoutes');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cors());
 // Routes
 app.use('/api/v1/vote/cumhurB', cumhurBaskanligiVoteBoxRouter);
 app.use('/api/v1/vote/milletvekili', milletvekiliVoteBoxRouter);
+app.use('/api/v1/login', loginRouter);
 
 
 

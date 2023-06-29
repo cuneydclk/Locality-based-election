@@ -4,20 +4,91 @@ const cumhurBaskanligiVoteBoxModel = require("../models/cumhurBVoteboxModel");
 exports.getAllMilletvekiliVote = async (req, res, next) => {
   try {
     const milletvekiliVote = await milletvekiliVoteBoxModel.find();
+
+    const organizedData = milletvekiliVote.reduce((acc, vote) => {
+      const existingMahalle = acc.find((mahalle) => mahalle.mahalleName === vote.mahalleName);
+
+      if (existingMahalle) {
+        existingMahalle.ballot_list.push({
+          ballot_no: vote.boxNumber.toString(),
+          results: [
+            { name: 'Millet', vote: vote.millet.toString() },
+            { name: 'Hak-Par', vote: vote.hakPar.toString() },
+            { name: 'TKP', vote: vote.tkp.toString() },
+            { name: 'TKH', vote: vote.tkh.toString() },
+            { name: 'Sol Parti', vote: vote.solParti.toString() },
+            { name: 'Genç Parti', vote: vote.gencParti.toString() },
+            { name: 'Memleket Partisi', vote: vote.memleket.toString() },
+            { name: 'BBP', vote: vote.bbp.toString() },
+            { name: 'Ak Parti', vote: vote.akParti.toString() },
+            { name: 'Yeniden Refah Partisi', vote: vote.yenidenRefah.toString() },
+            { name: 'MHP', vote: vote.mhp.toString() },
+            { name: 'Yeşil Sol', vote: vote.yesilSol.toString() },
+            { name: 'AB', vote: vote.ab.toString() },
+            { name: 'ANAP', vote: vote.anap.toString() },
+            { name: 'YP', vote: vote.yp.toString() },
+            { name: 'HKP', vote: vote.hkp.toString() },
+            { name: 'Milli Yol', vote: vote.milliYol.toString() },
+            { name: 'Vatan Partisi', vote: vote.vatanPartisi.toString() },
+            { name: 'GBP', vote: vote.gbp.toString() },
+            { name: 'CHP', vote: vote.chp.toString() },
+            { name: 'İYİ Parti', vote: vote.iyiParti.toString() },
+            { name: 'AP', vote: vote.ap.toString() },
+            { name: 'Zafer Partisi', vote: vote.zaferPartisi.toString() },
+          ],
+        });
+      } else {
+        acc.push({
+          mahalleName: vote.mahalleName,
+          ballot_list: [
+            {
+              ballot_no: vote.boxNumber.toString(),
+              results: [
+                { name: 'Millet', vote: vote.millet.toString() },
+                { name: 'Hak-Par', vote: vote.hakPar.toString() },
+                { name: 'TKP', vote: vote.tkp.toString() },
+                { name: 'TKH', vote: vote.tkh.toString() },
+                { name: 'Sol Parti', vote: vote.solParti.toString() },
+                { name: 'Genç Parti', vote: vote.gencParti.toString() },
+                { name: 'Memleket Partisi', vote: vote.memleket.toString() },
+                { name: 'BBP', vote: vote.bbp.toString() },
+                { name: 'Ak Parti', vote: vote.akParti.toString() },
+                { name: 'Yeniden Refah Partisi', vote: vote.yenidenRefah.toString() },
+                { name: 'MHP', vote: vote.mhp.toString() },
+                { name: 'Yeşil Sol', vote: vote.yesilSol.toString() },
+                { name: 'AB', vote: vote.ab.toString() },
+                { name: 'ANAP', vote: vote.anap.toString() },
+                { name: 'YP', vote: vote.yp.toString() },
+                { name: 'HKP', vote: vote.hkp.toString() },
+                { name: 'Milli Yol', vote: vote.milliYol.toString() },
+                { name: 'Vatan Partisi', vote: vote.vatanPartisi.toString() },
+                { name: 'GBP', vote: vote.gbp.toString() },
+                { name: 'CHP', vote: vote.chp.toString() },
+                { name: 'İYİ Parti', vote: vote.iyiParti.toString() },
+                { name: 'AP', vote: vote.ap.toString() },
+                { name: 'Zafer Partisi', vote: vote.zaferPartisi.toString() },
+              ],
+            },
+          ],
+        });
+      }
+
+      return acc;
+    }, []);
+
     res.status(200).json({
-      status: "success",
-      results: milletvekiliVote.length,
-      data: {
-        milletvekiliVote,
-      },
+      status: 'success',
+      results: organizedData.length,
+      data: organizedData,
     });
   } catch (err) {
     res.status(404).json({
-      status: "fail",
+      status: 'fail',
       message: err,
     });
   }
 };
+
 
 exports.postMilletvekiliVote = async (req, res, next) => {
   try {
@@ -207,20 +278,83 @@ exports.getMilletvekiliVoteBoxNumber = async (req, res, next) => {
 exports.getAllCumhurBaskanligiVote = async (req, res, next) => {
   try {
     const cumhurBaskanligiVote = await cumhurBaskanligiVoteBoxModel.find();
+
+    const organizedData = cumhurBaskanligiVote.reduce((acc, vote) => {
+      const existingSchool = acc.find((school) => school.schoolName === vote.mahalleName);
+
+      if (existingSchool) {
+        const existingBallot = existingSchool.ballot_list.find((ballot) => ballot.ballot_no === vote.boxNumber);
+
+        if (existingBallot) {
+          existingBallot.results.push({
+            name: 'Recep Tayyip Erdogan',
+            vote: vote.rte.toString(),
+          }, {
+            name: 'Muharram Ince',
+            vote: vote.ince.toString(),
+          }, {
+            name: 'Kemal Kılıçdaroğlu',
+            vote: vote.kemal.toString(),
+          }, {
+            name: 'Sinan Oğan',
+            vote: vote.sinan.toString(),
+          });
+        } else {
+          existingSchool.ballot_list.push({
+            ballot_no: vote.boxNumber.toString(),
+            results: [{
+              name: 'Recep Tayyip Erdogan',
+              vote: vote.rte.toString(),
+            }, {
+              name: 'Muharram Ince',
+              vote: vote.ince.toString(),
+            }, {
+              name: 'Kemal Kılıçdaroğlu',
+              vote: vote.kemal.toString(),
+            }, {
+              name: 'Sinan Oğan',
+              vote: vote.sinan.toString(),
+            }],
+          });
+        }
+      } else {
+        acc.push({
+          schoolName: vote.mahalleName,
+          ballot_list: [{
+            ballot_no: vote.boxNumber.toString(),
+            results: [{
+              name: 'Recep Tayyip Erdogan',
+              vote: vote.rte.toString(),
+            }, {
+              name: 'Muharram Ince',
+              vote: vote.ince.toString(),
+            }, {
+              name: 'Kemal Kılıçdaroğlu',
+              vote: vote.kemal.toString(),
+            }, {
+              name: 'Sinan Oğan',
+              vote: vote.sinan.toString(),
+            }],
+          }],
+        });
+      }
+
+      return acc;
+    }, []);
+
     res.status(200).json({
-      status: "success",
-      results: cumhurBaskanligiVote.length,
-      data: {
-        cumhurBaskanligiVote,
-      },
+      status: 'success',
+      results: organizedData.length,
+      data: organizedData,
     });
   } catch (err) {
     res.status(404).json({
-      status: "fail",
+      status: 'fail',
       message: err,
     });
   }
 };
+
 
 
 exports.getCumhurBaskanligiVoteMahalle = async (req, res, next) => {
