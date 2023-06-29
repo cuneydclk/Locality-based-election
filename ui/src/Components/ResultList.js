@@ -24,6 +24,7 @@ const ResulList = (props) => {
           )}
         </div>
       ))}
+
     </div>
   );
 };

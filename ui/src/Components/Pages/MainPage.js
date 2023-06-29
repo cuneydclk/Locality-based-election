@@ -96,14 +96,17 @@ const MainPage = () => {
   };
   useEffect(() => {
     axios.get("http://127.0.0.1:3001/api/v1/vote/cumhurB").then((response) => {
-      setClist(response.data.data.cumhurBaskanligiVote);
+      setClist(response.data.data);
     });
     axios
       .get("http://127.0.0.1:3001/api/v1/vote/milletvekili")
       .then((response) => {
-        setPlist(response.data.data.milletvekiliVote);
+        setPlist(response.data.data);
       });
   }, []);
+
+
+
   return (
     <div className={classes["main-page"]}>
       <div className={classes["election-title"]}>
@@ -119,15 +122,17 @@ const MainPage = () => {
             <p>{state.electionType}</p>
           </div>
           <div className={classes.sidebar}>
-            { <ResulList
-              electionResults={dummy_list}
-              neighborhoodName={neighborhoodName}
-              electionType={state.electionType}
-  />  }
+            {/*
+              <ResulList
+                electionResults={dummy_list}
+                neighborhoodName={neighborhoodName}
+                electionType={state.type}
+              />*/
+            }
             <Test
-              electionResults={[cList, pList]}
-              electionType={state.type}
+              electionResults={[cList,pList]}
               neighborhoodName={neighborhoodName}
+              electionType={state.type}
             />
           </div>
         </div>

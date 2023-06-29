@@ -14,18 +14,22 @@ const SchoolList = (props) => {
   return (
     <div className={classes["school-list-container"]}>
       {props.ballots.map((boxes) => (
-        <div key={boxes.boxNumber}>
+        <div key={boxes.ballot_no}>
           <button
             className={classes["box-button"]} // Add the class name here
-            onClick={() => boxHandler(boxes.boxNumber)}
+            onClick={() => boxHandler(boxes.ballot_no)}
           >
-            Sandık Numarası: {boxes.boxNumber}
+            Sandık Numarası: {boxes.ballot_no}
           </button>
-          {showBox[boxes.boxNumber] && (
+          {showBox[boxes.ballot_no] && (
             <div className={classes["box-results"]}>
-              {boxes.voteCounts.map((candidates, index) => (
+              {boxes.results.map((candidates, index) => (
                 <p key={index}>
-                  {candidates[0]}: {candidates[1]}
+                  {candidates.name} : {candidates.vote}
+                  {/* 
+                  candidates[0]}: {candidates[1]
+                  {candidates.name} : {candidates.vote}
+                  */}
                 </p>
               ))}
             </div>
