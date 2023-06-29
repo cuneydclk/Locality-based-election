@@ -1,6 +1,6 @@
 import SchoolList from "./UI/SchoolList";
 import React, { useEffect, useState } from "react";
-import classes from "./ResulList.module.css"
+import classes from "./ResulList.module.css";
 const ResulList = (props) => {
   const [boxResult, setBoxResult] = useState([]);
   const [showBox, setShowBox] = useState(false);
@@ -8,10 +8,9 @@ const ResulList = (props) => {
   const boxHandler = () => {
     setShowBox((prevEvent) => !prevEvent);
   };
-
+  console.log("result", props.electionType);
   useEffect(() => {
-    console.log("debug");
-    if (props.electionType === "mv") {
+    if (props.electionType === "cb") {
       const filteredResults = props.electionResults[1].filter(
         (result) => result.mahalleName === "ALTINTAŞ MAH."
       );
@@ -19,25 +18,24 @@ const ResulList = (props) => {
         setBoxResult(filteredResults[0].ballot_list);
       }
     } else {
-      const filteredResults = props.electionResults[0].filter(
-        (result) => result.mahalleName === "ALTINTAŞ MAH."
+      const filteredResult = props.electionResults[0].filter(
+        (result) => result.schoolName === "ALTINTAŞ MAH."
       );
-      if (filteredResults.length > 0) {
-        setBoxResult(filteredResults[0].ballot_list);
+      console.log(filteredResult);
+      if (filteredResult.length > 0) {
+        setBoxResult(filteredResult[0].ballot_list);
       }
     }
-  }, [props.electionResults, boxResult, props.electionType]);
+  }, [boxResult,props.neighborhoodName,props.electionResults,props.electionType]);
 
   return (
     <div className={classes["results-container"]}>
       <button onClick={boxHandler} style={{ fontSize: "XX-LARGE" }}>
         {props.neighborhoodName}
       </button>
-      {showBox && 
-      <SchoolList ballots={boxResult}/>}
-      
+      {showBox && <SchoolList ballots={boxResult} />}
     </div>
   );
-}
+};
 
 export default ResulList;

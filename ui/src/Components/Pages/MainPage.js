@@ -55,39 +55,26 @@ const dummy_list = [
   },
 ];
 
+
 const MainPage = () => {
   const [neighborhoodName, setNeighborhoodName] = useState("");
   const [pList, setPlist] = useState([]);
   const [cList, setClist] = useState([]);
+  const [electionT, setElectionT] = useState("Cumhurbaşkanı Sonuçları");
+  const [text, setText] = useState("Milletvekili Sonuçlarını Göster");
+  const [eType, setEType] = useState("mv");
 
-  const reducer = (state, action) => {
-    if (action.type === "mv") {
-      return {
-        type: "mv",
-        text: "Milletvekili Sonuçlarını Göster",
-        electionType: "Cumhurbaşkanlığı Sonuçları",
-      };
-    } else if (action.type === "cb") {
-      return {
-        type: "cb",
-        text: "Cumhurbaşkanlığı sonucunu göster",
-        electionType: "Milletvekili Sonuçları",
-      };
-    }
-    return state;
-  };
 
-  const [state, dispatch] = useReducer(reducer, {
-    type: "mv",
-    electionType: "Cumhurbaşkanlığı Sonuçları",
-    text: "Milletvekili Sonuçlarını Göster",
-  });
 
-  const changeResultHandler = (event) => {
-    if (state.type === "mv") {
-      dispatch({ type: "cb" });
-    } else {
-      dispatch({ type: "mv" });
+  const changeResultHandler = () => {
+    if (eType === "mv") {
+      setText("Cumhurbaşkanlığı Sonuçlarını göster");
+      setElectionT("Milletvekili Sonuçları");
+      setEType("cb");
+    } else if (eType === "cb") {
+      setText("Milletvekili Sonuçlarını göster");
+      setElectionT("Cumhurbaşkanlığı Sonuçları");
+      setEType("mv");
     }
   };
   const mapHandler = (mapname) => {
@@ -104,8 +91,6 @@ const MainPage = () => {
       });
   }, []);
 
-
-
   return (
     <div className={classes["main-page"]}>
       <div className={classes["election-title"]}>
@@ -118,20 +103,13 @@ const MainPage = () => {
         <div className={classes.right}>
           {" "}
           <div className={classes["election-type"]}>
-            <p>{state.electionType}</p>
+            <p>{electionT}</p>
           </div>
           <div className={classes.sidebar}>
-            {/*
-              <ResulList
-                electionResults={dummy_list}
-                neighborhoodName={neighborhoodName}
-                electionType={state.type}
-              />*/
-            }
             <ResulList
-              electionResults={[cList,pList]}
+              electionResults={[cList, pList]}
               neighborhoodName={neighborhoodName}
-              electionType={state.type}
+              electionType={eType}
             />
           </div>
         </div>
@@ -141,7 +119,7 @@ const MainPage = () => {
           className={classes["election-button"]}
           onClick={changeResultHandler}
         >
-          {state.text}
+          {text}
         </button>
       </div>
     </div>
