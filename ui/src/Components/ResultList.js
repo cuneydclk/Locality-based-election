@@ -1,32 +1,43 @@
 import SchoolList from "./UI/SchoolList";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./ResulList.module.css"
 const ResulList = (props) => {
-  const [showSchool, setShowSchool] = useState({});
+  const [boxResult, setBoxResult] = useState([]);
+  const [showBox, setShowBox] = useState(false);
 
-
-  const detailHandler = (schoolName) => {
-    setShowSchool((prevState) => ({
-      ...prevState,
-      [schoolName]: !prevState[schoolName],
-    }));
+  const boxHandler = () => {
+    setShowBox((prevEvent) => !prevEvent);
   };
+
+  useEffect(() => {
+    console.log("debug");
+    if (props.electionType === "mv") {
+      const filteredResults = props.electionResults[1].filter(
+        (result) => result.mahalleName === "ALTINTAŞ MAH."
+      );
+      if (filteredResults.length > 0) {
+        setBoxResult(filteredResults[0].ballot_list);
+      }
+    } else {
+      const filteredResults = props.electionResults[0].filter(
+        (result) => result.mahalleName === "ALTINTAŞ MAH."
+      );
+      if (filteredResults.length > 0) {
+        setBoxResult(filteredResults[0].ballot_list);
+      }
+    }
+  }, [props.electionResults, boxResult, props.electionType]);
 
   return (
     <div className={classes["results-container"]}>
-      {props.electionResults.map((result, index) => (
-        <div key={index}>
-          <button onClick={() => detailHandler(result.schoolName)}>
-            Okul Adı: {result.schoolName}
-          </button>
-          {showSchool[result.schoolName] && (
-            <SchoolList ballots={result.ballot_list} />
-          )}
-        </div>
-      ))}
-
+      <button onClick={boxHandler} style={{ fontSize: "XX-LARGE" }}>
+        {props.neighborhoodName}
+      </button>
+      {showBox && 
+      <SchoolList ballots={boxResult}/>}
+      
     </div>
   );
-};
+}
 
 export default ResulList;

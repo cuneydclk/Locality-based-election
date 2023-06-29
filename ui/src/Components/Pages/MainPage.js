@@ -3,7 +3,6 @@ import classes from "./MainPage.module.css";
 import { useReducer, useState, useEffect } from "react";
 import axios from "axios";
 import Map from "./Map";
-import Test from "../test/test";
 
 const dummy_list = [
   {
@@ -129,7 +128,7 @@ const MainPage = () => {
                 electionType={state.type}
               />*/
             }
-            <Test
+            <ResulList
               electionResults={[cList,pList]}
               neighborhoodName={neighborhoodName}
               electionType={state.type}

@@ -29,7 +29,7 @@ function Test(props) {
   }, [props.electionResults, boxResult, props.electionType]);
 
   return (
-    <div>
+    <div >
       <button onClick={boxHandler} style={{ fontSize: "XX-LARGE" }}>
         {props.neighborhoodName}
       </button>
