@@ -26,10 +26,6 @@ const SchoolList = (props) => {
               {boxes.results.map((candidates, index) => (
                 <p key={index}>
                   {candidates.name} : {candidates.vote}
-                  {/* 
-                  candidates[0]}: {candidates[1]
-                  {candidates.name} : {candidates.vote}
-                  */}
                 </p>
               ))}
             </div>
