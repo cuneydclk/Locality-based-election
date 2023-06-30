@@ -1,7 +1,136 @@
-.main{
-    display: flex;
+/* MainPage.module.css */
+.main-page {
+  display: flex;
+  flex-direction: column;
+}
+.election-title {
+  text-align: center;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px 16px;
+  
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  align-items: center;
+
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 19px 24px;
 }
 
-.left{
-    margin-right: 60px
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.map {
+  width: 900px;
+  height: 900px;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px; /* Add spacing to the right of the map component */
+  margin-left: 20px; /* Add spacing to the left of the map component */
+}
+
+
+
+.election-title h1 {
+  text-align: center;
+  font-family: "Inter";
+  font-size: 40px;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
+}
+
+.election-type {
+  top: 84px;
+  left: 1155px;
+  width: 312px;
+  height: 84px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #e21c1c;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 19px 24px;
+}
+.right{
+  margin-right: 50px;
+  margin-left: 0px;
+}
+
+.election-type p {
+  text-align: center;
+  font-family: "Inter";
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
+ 
+}
+
+
+
+.sidebar {
+  top: 185px;
+  left: 1155px;
+  width: 320px;
+  height: 722px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border-radius: 8px;
+}
+
+.election-button {
+  width: 578px;
+  height: 45px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border-radius: 8px;
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.election-button:hover {
+  background-color: #ccc;
+}
+
+.bottom{
+
+  margin-left: 200px; /* Add spacing to the left of the map component */
+}
+
+
