@@ -36,11 +36,15 @@ console.log(props.neighborhoodName, "neh")
 
   return (
     <div className={classes["results-container"]}>
-      <button onClick={boxHandler} style={{ fontSize: "XX-LARGE" }}>
-        {props.neighborhoodName.name}
-      </button>
-      {showBox && <SchoolList ballots={boxResult} />}
-    </div>
+  <button
+    onClick={boxHandler}
+    
+  >
+    <span className="text">{props.neighborhoodName.name}</span>
+  </button>
+  {showBox && <SchoolList ballots={boxResult} />}
+</div>
+
   );
 };
 

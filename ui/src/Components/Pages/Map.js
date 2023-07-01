@@ -7,7 +7,7 @@ function Map(props) {
   useEffect(() => {
     const map = L.map("map").setView([38.2987, 26.6803], 11);
 
-    
+     
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "Map data &copy; OpenStreetMap contributors",

@@ -228,8 +228,10 @@ const MainPage = () => {
         <h1>2023 Cumhurbaşkanlığı Seçimleri</h1>
       </div>
       <div className={classes.main}>
-        <div className={classes.map}>
-          <Map mapName={mapHandler} />
+      <div className={classes.mapcontainer}>
+          <div className={classes.map}>
+            <Map mapName={mapHandler} />
+          </div>
         </div>
         <div className={classes.right}>
           {" "}
