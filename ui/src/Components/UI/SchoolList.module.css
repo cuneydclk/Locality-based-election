@@ -1,5 +1,7 @@
 .school-list-container {
   margin-top: 16px;
+  height: 770px;
+  overflow: auto;
 }
 
 .box-button {
@@ -27,7 +29,8 @@
   margin-top: 8px;
   font-family: "Inter";
   font-size: 14px;
-  color: #000000;
+  color: white;
+  font-weight: 800;
 }
 
 .box-results p {

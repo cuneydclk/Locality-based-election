@@ -5,17 +5,7 @@ import mapData from "./Data/map.geojson";
 
 function Map(props) {
   useEffect(() => {
-    const map = L.map("map", {
-      center: [38.2987, 26.6803],
-      zoom: 11,
-      dragging: false, // Disable zooming by disabling dragging
-      touchZoom: false, // Disable zooming on touch devices
-      scrollWheelZoom: false, // Disable zooming with the scroll wheel
-      doubleClickZoom: false, // Disable zooming with double click
-      boxZoom: false, // Disable zooming with shift + drag
-      keyboard: false, // Disable zooming with keyboard shortcuts
-      zoomControl: false, // Disable default zoom control
-    });
+    const map = L.map("map").setView([38.2987, 26.6803], 11);
 
     
 
@@ -41,8 +31,9 @@ function Map(props) {
     }
 
     // Fetch the GeoJSON file
-    fetch("/static/media/map.0c6fc7e3d4d8e77b7c2f.geojson")
+    fetch(mapData)
       .then((response) => response.json())
+      .then(console.log("SA"))
       .then((geojsonData) => {
         if (geojsonData && geojsonData.features) {
           geojsonData.features.forEach((feature, index) => {
