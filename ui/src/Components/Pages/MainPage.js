@@ -73,13 +73,13 @@ const MainPage = () => {
           <div className={classes["election-type"]}>
             <p>{electionT}</p>
           </div>
+
           <div className={classes.sidebar}>
-            <button onClick={mahalleHandler}>{btext}</button>
-            <ResultList
-              electionResults={[cList, pList]}
-              electionType={eType}
-            />
+            <ResultList electionResults={[cList, pList]} electionType={eType} />
           </div>
+          <button className={classes.mv} onClick={mahalleHandler}>
+            {btext}
+          </button>
         </div>
       </div>
       <div className={classes.bottom}>

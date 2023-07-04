@@ -75,13 +75,14 @@ const AdminMainPage = () => {
               <p>{electionT}</p>
             </div>
             <div className={classes.sidebar}>
-              <button onClick={mahalleHandler}>{btext}</button>
-
               <ResulList
                 electionResults={[cList, pList]}
                 electionType={eType}
               />
             </div>
+            <button className={classes.mv} onClick={mahalleHandler}>
+              {btext}
+            </button>
           </div>
         </div>
         <div className={classes.bottom}>

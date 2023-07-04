@@ -31,6 +31,7 @@ function MenuBar() {
           onClick={() => {
             ctx.onLogout();
             navigate("/");
+            ctx.onShow();
           }}
         >
           Logout

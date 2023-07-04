@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, forwardRef, useRef } from "react";
+import React, { useEffect, useContext, forwardRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import mapData from "./Data/map.geojson";
@@ -7,7 +7,7 @@ import AuthContext from "../../store/auth-context";
 
 const Map = forwardRef((props, ref) => {
   const ctx = useContext(AuthContext);
-  const mapRef = useRef(null);
+
 
   
   useEffect(() => {
