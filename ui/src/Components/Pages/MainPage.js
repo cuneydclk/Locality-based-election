@@ -1,12 +1,13 @@
-import ResulList from "../ResultList";
-import classes from "./MainPage.module.css";
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import Map from "./Map";
 import AuthContext from "../../store/auth-context";
+import ResultList from "../ResultList";
+import classes from "./MainPage.module.css";
 
 const MainPage = () => {
   const ctx = useContext(AuthContext);
+  const mapRef = useRef(null);
 
   const [pList, setPlist] = useState([]);
   const [cList, setClist] = useState([]);
@@ -16,6 +17,7 @@ const MainPage = () => {
 
   const [btext, setBtext] = useState("Mahalleleri Gizle");
   console.log("CONTEXT IS ", ctx.showNeighbourhood);
+
   const changeResultHandler = () => {
     if (eType === "mv") {
       setText("Cumhurbaşkanlığı Sonuçlarını göster");
@@ -50,6 +52,9 @@ const MainPage = () => {
       ctx.onNotShow();
     } else {
       ctx.onShow();
+      if (mapRef.current) {
+        mapRef.current.onshowNeighborhoodClick();
+      }
     }
   };
 
@@ -61,18 +66,19 @@ const MainPage = () => {
       <div className={classes.main}>
         <div className={classes.mapcontainer}>
           <div className={classes.map}>
-            <Map />
+            <Map ref={mapRef} />
           </div>
         </div>
         <div className={classes.right}>
-          {" "}
           <div className={classes["election-type"]}>
             <p>{electionT}</p>
           </div>
           <div className={classes.sidebar}>
             <button onClick={mahalleHandler}>{btext}</button>
-
-            <ResulList electionResults={[cList, pList]} electionType={eType} />
+            <ResultList
+              electionResults={[cList, pList]}
+              electionType={eType}
+            />
           </div>
         </div>
       </div>

@@ -1,11 +1,15 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, forwardRef, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import mapData from "./Data/map.geojson";
 import AuthContext from "../../store/auth-context";
 
-function Map(props) {
+
+const Map = forwardRef((props, ref) => {
   const ctx = useContext(AuthContext);
+  const mapRef = useRef(null);
+
+  
   useEffect(() => {
     const map = L.map("map").setView([38.2987, 26.6803], 11);
 
@@ -16,6 +20,14 @@ function Map(props) {
     function a() {
       console.log(mapData);
     }
+
+    function onshowNeighborhoodClick() {
+      console.log("onshowNeighborhoodClick");
+      if (map && ctx.showNeighbourhood) {
+        map.setView([38.2987, 26.6803], 11);
+      }
+    }
+
 
     // Add event listener for neighborhood click
     function onNeighborhoodClick(e) {
@@ -56,16 +68,22 @@ function Map(props) {
         console.error("Error fetching GeoJSON data:", error);
       });
 
-    a();
+      if (ref) {
+        ref.current = {
+          onshowNeighborhoodClick,
+        };
+      }
+
+      a();
 
     return () => {
       // Clean up the map when the component unmounts
       map.remove();
     };
-  }, []);
+  },  [ctx.showNeighbourhood]);
 
   return <div id="map" style={{ height: "800px" }}></div>;
-}
+});
 
 function getRandomColor(index) {
   const hue = (index * 137.5) % 360; // Generate hue based on index
