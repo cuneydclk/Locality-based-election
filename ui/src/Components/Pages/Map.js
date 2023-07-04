@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import mapData from "./Data/map.geojson";
+import AuthContext from "../../store/auth-context";
 
 function Map(props) {
+  const ctx = useContext(AuthContext);
   useEffect(() => {
     const map = L.map("map").setView([38.2987, 26.6803], 11);
-
-     
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "Map data &copy; OpenStreetMap contributors",
@@ -19,9 +19,10 @@ function Map(props) {
 
     // Add event listener for neighborhood click
     function onNeighborhoodClick(e) {
+      ctx.onNotShow();
       const clickedFeature = e.target.feature;
       // console.log('Neighborhood clicked:', clickedFeature.properties);
-      props.mapName(Object.keys(clickedFeature.properties)[0]);
+      ctx.onMap(Object.keys(clickedFeature.properties)[0]);
 
       // Get the centroid of the clicked feature
       const centroid = L.geoJSON(clickedFeature).getBounds().getCenter();
@@ -40,7 +41,7 @@ function Map(props) {
             const neighborhoodLayer = L.geoJSON(feature, {
               style: {
                 fillColor: getRandomColor(index),
-                fillOpacity: 0.95, // Adjust the transparency here
+                fillOpacity: 0.5, // Adjust the transparency here
                 color: "black",
                 weight: 1,
               },

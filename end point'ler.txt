@@ -33,6 +33,8 @@ kullanıcı yaratma
     "password":""
 }
 
+mongodb+srv://hasancenk453:0iwqyNVIvhp3Kot0@localitybasedelection.jslgl7x.mongodb.net/test
+
 
 
 giriş yapma

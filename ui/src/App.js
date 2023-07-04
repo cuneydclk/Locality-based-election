@@ -14,7 +14,7 @@ function App() {
     if (item) {
       ctx.onLogin();
     }
-  });
+  },[]);
   return (
     <Router>
       <Routes>

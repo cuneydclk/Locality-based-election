@@ -104,13 +104,15 @@
 
 
 .sidebar {
+  margin-top: 10px;
   top: 185px;
   left: 1155px;
-  width: 320px;
+  width: auto;
   height: 722px;
   background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
   border-radius: 8px;
-  overflow: hidden;
+  overflow-y: auto;
+
 }
 
 .election-button {
