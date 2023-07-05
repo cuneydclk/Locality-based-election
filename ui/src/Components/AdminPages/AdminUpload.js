@@ -64,14 +64,6 @@ const AdminUpload = (props) => {
     );
   };
 
-  /*fetch("http://127.0.0.1:3001/api/v1/vote/cumhurB/array", {
-      method: "POST",
-      headers: {
-        cumhurbaşkanı: "cb.json",
-      },
-      body: JSON.stringify(document[1]),
-    });*/
-
   return (
     <div className={classes.main}>
       <MenuBar />

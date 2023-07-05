@@ -6,14 +6,9 @@ import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(["admin", "1234"]);
+  const [invalid, setInvalid] = useState(false);
   const ctx = useContext(AuthContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    //burada sunucudan admin çekilecek
-    setUser(["admin", "1234"]);
-  }, []);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -21,13 +16,35 @@ const LoginPage = () => {
       console.log("Invalid inputs!");
       return;
     }
-    if (userName === user[0] && password === user[1]) {
-      ctx.onLogin();
-      navigate("/adminMain");
-    }
-    else{
-      console.log("Username or password is incorrect")
-    }
+    const input = {
+      username: userName,
+      password: password,
+    };
+    fetch("http://127.0.0.1:3001/api/v1/login/", {
+      method: "POST",
+      body: JSON.stringify(input),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("başarılı");
+          ctx.onLogin();
+          navigate("/adminMain");
+          // Successful login
+          // Handle the response or redirect to a new page
+        } else {
+          console.log("başarısız");
+          setInvalid(true)
+          // Invalid credentials
+          // Handle the error, display an error message, or perform any necessary actions
+        }
+      })
+      .catch((error) => {
+        // Handle any network or server errors
+        console.error("Error:", error);
+      });
   };
 
   const userNameHandler = (event) => {
@@ -39,23 +56,27 @@ const LoginPage = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <label htmlFor="user">Username</label>
-      <input
-        id="user"
-        type="text"
-        value={userName}
-        onChange={userNameHandler}
-      ></input>
-      <label htmlFor="user">Password</label>
-      <input
-        id="password"
-        type="password"
-        value={password}
-        onChange={passwordHandler}
-      ></input>
-      <button className="login">Login!</button>
-    </form>
+    <div>
+      {" "}
+      <form onSubmit={submitHandler}>
+        <label htmlFor="user">Username</label>
+        <input
+          id="user"
+          type="text"
+          value={userName}
+          onChange={userNameHandler}
+        ></input>
+        <label htmlFor="user">Password</label>
+        <input
+          id="password"
+          type="password"
+          value={password}
+          onChange={passwordHandler}
+        ></input>
+        <button className="login">Login!</button>
+      </form>
+      {invalid && <p>invalid input</p>}
+    </div>
   );
 };
 
