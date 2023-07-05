@@ -23,7 +23,7 @@ sadece belirlik sandık numarasını çekme (milletvekili)
 (get)http://127.0.0.1:3001/api/v1/vote/milletvekili/box/1001
 
 
-
+http://127.0.0.1:3001/api/v1/vote/milletvekili/array
 
 
 kullanıcı yaratma 

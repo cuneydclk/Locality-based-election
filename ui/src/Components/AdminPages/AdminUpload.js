@@ -16,7 +16,7 @@ const AdminUpload = (props) => {
 
   const dateHandler = (event) => {
     if (event.target.value.length !== 0) {
-      setElectionDate(event.target.value)
+      setElectionDate(event.target.value);
     }
   };
   const dHandler = (event) => {
@@ -25,16 +25,53 @@ const AdminUpload = (props) => {
     }
   };
   const documentHandler = (event) => {
-    console.log(event);
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const fileContent = reader.result;
+      const jsonData = JSON.parse(fileContent);
+      setDocument(jsonData);
+      console.log("deneme");
+    };
+
+    reader.readAsText(file);
   };
-  const submitHandler = (event) => {
+
+  const submitHandler = async (event) => {
     event.preventDefault();
-    axios.post("https://deneme-102b4-default-rtdb.firebaseio.com/hey.json", {
-      name: electionName,
-      date: electionDate,
-      description: electionD,
-    });
+    console.log(document);
+
+    const response = await fetch(
+      "http://127.0.0.1:3001/api/v1/vote/milletvekili/array",
+      {
+        method: "POST",
+        body: JSON.stringify(document[0]),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const response2 = await fetch(
+      "http://127.0.0.1:3001/api/v1/vote/cumhurB/array",
+      {
+        method: "POST",
+        body: JSON.stringify(document[1]),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   };
+
+  /*fetch("http://127.0.0.1:3001/api/v1/vote/cumhurB/array", {
+      method: "POST",
+      headers: {
+        cumhurbaşkanı: "cb.json",
+      },
+      body: JSON.stringify(document[1]),
+    });*/
+
   return (
     <div className={classes.main}>
       <MenuBar />
