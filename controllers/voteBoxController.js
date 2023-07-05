@@ -477,3 +477,28 @@ exports.postCumhurBaskanligiVoteArray = async (req, res, next) => {
     });
   }
 };
+
+
+
+
+
+exports.deleteAllVotes = async (req, res, next) => {
+  try {
+    // Delete all documents from the "milletvekili" collection
+    await milletvekiliVoteBoxModel.deleteMany();
+
+    // Delete all documents from the "cumhurbvotes" collection
+    await cumhurBaskanligiVoteBoxModel.deleteMany();
+
+    res.status(200).json({
+      status: 'success',
+      message: 'All votes have been deleted.',
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 'error',
+      message: 'Failed to delete votes.',
+    });
+  }
+};
+

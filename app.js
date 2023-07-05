@@ -6,6 +6,8 @@ const globalErrorHandler = require('./controllers/errorController');
 const milletvekiliVoteBoxRouter = require('./routes/milletvekiliVoteBoxRoutes');
 const cumhurBaskanligiVoteBoxRouter = require('./routes/cumhurBVoteBoxRoutes');
 const loginRouter = require('./routes/loginRoutes');
+const deleteVotesRouter = require('./routes/deleteVotesRoutes');
+
 
 const app = express();
 
@@ -21,6 +23,7 @@ app.use(cors());
 app.use('/api/v1/vote/cumhurB', cumhurBaskanligiVoteBoxRouter);
 app.use('/api/v1/vote/milletvekili', milletvekiliVoteBoxRouter);
 app.use('/api/v1/login', loginRouter);
+app.use('/api/v1/deleteVotes', deleteVotesRouter);
 
 
 
