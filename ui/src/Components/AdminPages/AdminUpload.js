@@ -1,7 +1,6 @@
 import MenuBar from "../AdminUI/MenuBar";
 import classes from "./AdminUpload.module.css";
 import { useState } from "react";
-import axios from "axios";
 const AdminUpload = (props) => {
   const [electionName, setElectionName] = useState("");
   const [electionDate, setElectionDate] = useState("");

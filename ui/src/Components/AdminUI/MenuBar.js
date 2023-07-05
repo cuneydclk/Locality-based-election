@@ -36,6 +36,9 @@ function MenuBar() {
         >
           Logout
         </button>
+        <button onClick={()=>{
+          fetch("http://127.0.0.1:3001/api/v1/deleteVotes")
+        }}>Delete Election</button>
       </div>
     </div>
   );
