@@ -7,13 +7,15 @@ const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [invalid, setInvalid] = useState(false);
+  const [invalidText, setInvalidText] = useState("");
   const ctx = useContext(AuthContext);
   const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
     if (userName.trim().length === 0 || password.trim().length === 0) {
-      console.log("Invalid inputs!");
+      setInvalidText("Invalid input!");
+      setInvalid(true);
       return;
     }
     const input = {
@@ -29,14 +31,13 @@ const LoginPage = () => {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("başarılı");
           ctx.onLogin();
           navigate("/adminMain");
           // Successful login
           // Handle the response or redirect to a new page
         } else {
-          console.log("başarısız");
-          setInvalid(true)
+          setInvalid(true);
+          setInvalidText("Incorrect username or password!");
           // Invalid credentials
           // Handle the error, display an error message, or perform any necessary actions
         }
@@ -73,9 +74,10 @@ const LoginPage = () => {
           value={password}
           onChange={passwordHandler}
         ></input>
+
         <button className="login">Login!</button>
+        {invalid && <p style={{color:"white", fontFamily:"Inter", fontWeight:"bold", fontSize:"18px", marginTop:"2px"}}>{invalidText}</p>}
       </form>
-      {invalid && <p>invalid input</p>}
     </div>
   );
 };

@@ -9,20 +9,20 @@
   margin-left: auto;
   margin-right: auto;
   padding: 8px 16px;
-  
+
   border-radius: 8px;
   margin-top: 20px;
   margin-bottom: 50px;
   align-items: center;
 
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
-  font-family: Phantomsans, sans-serif;
+  font-family: "Inter";
   font-size: 20px;
   justify-content: center;
   line-height: 1em;
@@ -47,14 +47,12 @@
   margin-left: 20px; /* Add spacing to the left of the map component */
 }
 
-
-
 .election-title h1 {
   text-align: center;
   font-family: "Inter";
   font-size: 40px;
   font-weight: bold;
-  color: #000000;
+  color: white;
   margin: 0;
 }
 
@@ -69,35 +67,34 @@
   border-radius: 8px;
 
   align-items: center;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 0;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
-  color: #e21c1c;
+  color: white;
   display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 20px;
+  font-family: "Inter";
+  font-size: 22px;
   justify-content: center;
   line-height: 1em;
   max-width: 100%;
   min-width: 140px;
   padding: 19px 24px;
 }
-.right{
+.right {
   margin-right: 50px;
   margin-left: 0px;
 }
 
-
-
-
-
 .sidebar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 1px;
   top: 185px;
   left: 1155px;
   width: 320px;
   height: 722px;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border-radius: 8px;
   overflow: auto;
 }
@@ -105,7 +102,7 @@
 .election-button {
   width: 578px;
   height: 45px;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border-radius: 8px;
   font-family: "Inter";
   font-size: 16px;
@@ -121,11 +118,9 @@
   background-color: #ccc;
 }
 
-.bottom{
-
+.bottom {
   margin-left: 200px; /* Add spacing to the left of the map component */
 }
-
 
 .mv {
   align-items: center;
@@ -157,7 +152,7 @@
   outline: 0;
 }
 
-.right{
+.right {
   margin-right: 10px;
 }
 
@@ -173,7 +168,6 @@
 }
 
 @media (max-width: 768px) {
-
   .left {
     display: flex;
     flex-direction: row;
@@ -181,11 +175,10 @@
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .main {
     flex-direction: column;
   }
-
 
   .election-title h1 {
     text-align: center;
@@ -212,8 +205,8 @@
     margin-right: auto;
     margin-bottom: 10px;
   }
-  
-  .election-type  {
+
+  .election-type {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -224,7 +217,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
-   
   }
 
   .bottom {
@@ -244,8 +236,8 @@
     border: 0;
     border-radius: 8px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-    box-sizing: border-box;  
-    display: flex;    
+    box-sizing: border-box;
+    display: flex;
     justify-content: center;
     line-height: 1em;
     margin: 0 auto;
@@ -258,7 +250,5 @@
     touch-action: manipulation;
     white-space: nowrap;
     cursor: pointer;
-    
   }
-  
 }
