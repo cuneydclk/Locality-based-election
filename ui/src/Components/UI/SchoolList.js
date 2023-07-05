@@ -24,7 +24,7 @@ const SchoolList = (props) => {
           {showBox[boxes.ballot_no] && (
             <div className={classes["box-results"]}>
               {boxes.results.map((candidates, index) => (
-                <p key={index}>
+                <p  style={{color:"white", fontSize:"18px"}}key={index}>
                   {candidates.name} : {candidates.vote}
                 </p>
               ))}

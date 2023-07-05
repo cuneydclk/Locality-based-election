@@ -61,7 +61,7 @@ const MainPage = () => {
   return (
     <div className={classes["main-page"]}>
       <div className={classes["election-title"]}>
-        <h1>2023 Cumhurbaşkanlığı Seçimleri</h1>
+        <h1>2023 Genel Seçimleri</h1>
       </div>
       <div className={classes.main}>
         <div className={classes.mapcontainer}>
