@@ -36,9 +36,15 @@ function MenuBar() {
         >
           Logout
         </button>
-        <button onClick={()=>{
-          fetch("https://locality-based-election.onrender.com/api/v1/deleteVotes")
-        }}>Delete Election</button>
+        <button
+          onClick={() => {
+            fetch(
+              "https://locality-based-election.onrender.com/api/v1/deleteVotes"
+            );
+          }}
+        >
+          Delete Election
+        </button>
       </div>
     </div>
   );
