@@ -42,7 +42,7 @@ const AdminUpload = (props) => {
     console.log(document);
 
     const response = await fetch(
-      "https://locality-based-election.onrender.com/api/vote/milletvekili/array",
+      "https://locality-based-election.onrender.com/api/v1/vote/milletvekili/array",
       {
         method: "POST",
         body: JSON.stringify(document[0]),
