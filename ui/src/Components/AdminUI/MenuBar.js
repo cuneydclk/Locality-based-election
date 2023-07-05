@@ -37,7 +37,7 @@ function MenuBar() {
           Logout
         </button>
         <button onClick={()=>{
-          fetch("https://locality-based-election.onrender.com/api/v1/deleteVotes".then((response)=>(console.log(response))))
+          fetch("https://locality-based-election.onrender.com/api/v1/deleteVotes")
         }}>Delete Election</button>
       </div>
     </div>
