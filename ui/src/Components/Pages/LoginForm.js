@@ -1,5 +1,5 @@
 import "./LoginForm.css";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const LoginPage = () => {
       username: userName,
       password: password,
     };
-    fetch("http://127.0.0.1:3001/api/v1/login/", {
+    fetch("https://locality-based-election.onrender.com/api/v1/login/", {
       method: "POST",
       body: JSON.stringify(input),
       headers: {
