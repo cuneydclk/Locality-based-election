@@ -88,15 +88,7 @@
   margin-left: 0px;
 }
 
-.election-type p {
-  text-align: center;
-  font-family: "Inter";
-  font-size: 24px;
-  font-weight: bold;
-  color: #000000;
-  margin: 0;
- 
-}
+
 
 
 
@@ -180,3 +172,93 @@
   }
 }
 
+@media (max-width: 768px) {
+
+  .left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .main {
+    flex-direction: column;
+  }
+
+
+  .election-title h1 {
+    text-align: center;
+    font-family: "Inter";
+    font-size: 40px;
+    font-weight: bold;
+    color: #000000;
+    margin: 0;
+  }
+  .map {
+    width: 100%; /* Take up full width */
+    height: 650px; /* Adjust height as needed */
+    margin: 20px 0; /* Add spacing to the top and bottom of the map component */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sidebar {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+  
+  .election-type  {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Inter";
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+   
+  }
+
+  .bottom {
+    margin-left: 0; /* Remove spacing to the left of the map component */
+    margin-bottom: 10px;
+  }
+
+  .mv {
+    margin-left: auto; /* Remove spacing to the left of the map component */
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+
+  .election-button {
+    align-items: center;
+    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;  
+    display: flex;    
+    justify-content: center;
+    line-height: 1em;
+    margin: 0 auto;
+    max-width: 275px;
+    min-width: 140px;
+    padding: 19px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    
+  }
+  
+}
