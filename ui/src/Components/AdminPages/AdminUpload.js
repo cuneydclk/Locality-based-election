@@ -43,7 +43,7 @@ const AdminUpload = (props) => {
     console.log(document);
 
     const response = await fetch(
-      "http://127.0.0.1:3001/api/v1/vote/milletvekili/array",
+      "https://locality-based-election.onrender.com/api/v1/vote/milletvekili/array",
       {
         method: "POST",
         body: JSON.stringify(document[0]),
@@ -53,7 +53,7 @@ const AdminUpload = (props) => {
       }
     );
     const response2 = await fetch(
-      "http://127.0.0.1:3001/api/v1/vote/cumhurB/array",
+      "https://locality-based-election.onrender.com/api/v1/vote/cumhurB/array",
       {
         method: "POST",
         body: JSON.stringify(document[1]),
@@ -64,7 +64,7 @@ const AdminUpload = (props) => {
     );
   };
 
-  /*fetch("http://127.0.0.1:3001/api/v1/vote/cumhurB/array", {
+  /*fetch("https://locality-based-election.onrender.com/api/v1/vote/cumhurB/array", {
       method: "POST",
       headers: {
         cumhurbaşkanı: "cb.json",

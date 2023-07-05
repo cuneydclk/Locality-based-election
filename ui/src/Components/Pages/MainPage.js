@@ -31,11 +31,11 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:3001/api/v1/vote/cumhurB").then((response) => {
+    axios.get("https://locality-based-election.onrender.com/api/v1/vote/cumhurB").then((response) => {
       setClist(response.data.data);
     });
     axios
-      .get("http://127.0.0.1:3001/api/v1/vote/milletvekili")
+      .get("https://locality-based-election.onrender.com/api/v1/vote/milletvekili")
       .then((response) => {
         setPlist(response.data.data);
       });
