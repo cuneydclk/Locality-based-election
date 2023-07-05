@@ -65,7 +65,9 @@ const AdminUpload = (props) => {
 
   return (
     <div className={classes.main}>
-      <MenuBar />
+      <div className={classes.left}>
+        <MenuBar />
+      </div>
 
       <div className={classes.right}>
         <h1>Upload Election Page </h1>
