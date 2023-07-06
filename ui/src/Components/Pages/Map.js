@@ -15,6 +15,17 @@ const Map = forwardRef((props, ref) => {
       minZoom: 10,
     }).setView([38.2987, 26.6803], 11);
     
+    const southWest = L.latLng(37.9, 26.3);
+    const northEast = L.latLng(38.5 , 26.9);
+    const bounds = L.latLngBounds(southWest, northEast);
+    
+    map.setMaxBounds(bounds);
+    map.on("drag", () => {
+      map.panInsideBounds(bounds, { animate: false });
+    });
+    
+
+    
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "Map data &copy; OpenStreetMap contributors",
