@@ -14,17 +14,22 @@ function App() {
     if (item) {
       ctx.onLogin();
     }
-  },[]);
+  }, []);
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        {ctx.isLogin && <Route path="/upload" element={<AdminUpload />} />}
+    <div style={{backgroundColor:"lavender"}}>
+      {" "}
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          {ctx.isLogin && <Route path="/upload" element={<AdminUpload />} />}
 
-        {ctx.isLogin && <Route path="/adminMain" element={<AdminMainPage />} />}
-      </Routes>
-    </Router>
+          {ctx.isLogin && (
+            <Route path="/adminMain" element={<AdminMainPage />} />
+          )}
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
